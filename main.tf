@@ -1,4 +1,11 @@
 terraform {
+    backend "remote" {
+      hostname = "app.terraform.io"
+      organization = "KnoldusAkash"
+      workspaces {
+        name = "vcs-terraform"
+      }
+    }
   
 }
 
@@ -10,7 +17,7 @@ provider "aws" {
 
 
 module "apache" {
-  source = ".//terraform-aws-apache-example"
+  source = "akpriyadarshi/apache-example/aws"
   vpc_id = var.vpc_id
   public_key = var.public_key
   instance_type = var.instance_type
