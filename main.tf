@@ -15,6 +15,10 @@ provider "aws" {
 
 }
 
+resource "aws_s3_bucket" "bucket"{
+
+ bucket = "vcs-${uuid()}"
+}
 
 module "apache" {
   source = "akpriyadarshi/apache-example/aws"
